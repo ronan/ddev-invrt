@@ -1,9 +1,0 @@
-#!/bin/bash
-
-#ddev-generated
-
-SITE=${DDEV_PANTHEON_SITE:-$PANTHEON_SITE}
-if [[ -n  "$SITE" ]]; then
-  echo "# Pantheon environments from $DDEV_PANTHEON_SITE"
-  ddev exec terminus envs $SITE --format=list --field=domain
-fi

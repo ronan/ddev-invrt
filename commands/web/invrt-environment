@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#ddev-generated
+
+SITE=${DDEV_PANTHEON_SITE:-$PANTHEON_SITE}
+if [[ -n  "$SITE" ]]; then
+  echo "# Pantheon environments from $DDEV_PANTHEON_SITE"
+  envs=$(exec terminus envs $SITE --format=tsv --fields=id,domain)
+  while IFS=$'\t' read -r id domain; do
+    echo "\
+
+$id:
+  name: Pantheon $id
+  url: https://$domain"
+  done <<< "$envs"
+fi

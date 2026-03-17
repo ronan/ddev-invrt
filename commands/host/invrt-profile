@@ -4,21 +4,22 @@
 
 if [ $DDEV_PROJECT_TYPE == "drupal11" ]; then
 
-  echo "# Drupal roles from $DDEV_PROJECT
-
+  echo "\
+# Drupal roles from $DDEV_PROJECT
+#ddev-generated
 "
   for role in $(ddev drush role:list --field=rid); do
     user="invrt-test-$role"
     credentials=""
     if [ $role != "anonymous" ]; then
         credentials="\
-      username: $user
-      password: $user"
+  username: $user
+  password: $user"
     fi
 
     echo "\
-    $role:
-      name: $(ddev drush role:list --filter=rid=$role --field=label)
+$role:
+  name: $(ddev drush role:list --filter=rid=$role --field=label)
 $credentials
 "
     # ddev drush user:create $user --password="$user" --mail="$user@example.com" 1>&2

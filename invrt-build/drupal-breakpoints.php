@@ -14,7 +14,7 @@ foreach ($bm->getGroups() as $group_id => $group_label) {
       $h = $w < 600 ? $w * 2 : (int) ($w * 0.75);
       $minmax = $match[1] === 'min' ? 'Minimum Width' : 'Maximum Width';
 
-      echo "  " . strtr($breakpoint_id, '.', '-') . "-" . $match[1] . ":\n";
+      echo "  " . strtr($breakpoint_id, '._', '--') . "-" . $match[1] . ":\n";
       echo "    name: " . $group_label . " " . $label . " - " . $minmax ."\n";
       echo "    viewport_width: $w\n";
       echo "    viewport_height: $h\n\n";

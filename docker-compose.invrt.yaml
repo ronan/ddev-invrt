@@ -8,12 +8,9 @@ services:
     entrypoint: [ /entrypoint.sh ]
     environment:
       DDEV_HOSTNAME: $DDEV_HOSTNAME
-      DDEV_TYPE: $DDEV_TYPE
       DDEV_PRIMARY_URL: $DDEV_PRIMARY_URL
       DDEV_APPROOT: $DDEV_APPROOT
       DDEV_SITENAME: $DDEV_SITENAME
-      DDEV_PANTHEON_SITE: $DDEV_PANTHEON_SITE
-      PANTHEON_SITE: $PANTHEON_SITE
 
     # These labels ensure this service is discoverable by DDEV.
     labels:

@@ -5,9 +5,9 @@ project_files:
   - docker-compose.invrt.yaml
   - commands/invrt/invrt-crawl
   - commands/host/invrt-profile
-  - commands/host/invrt-environment
   - commands/host/invrt-device
-  - commands/host/invrt-config
+  - commands/host/invrt-configure
+  - commands/web/invrt-environment
   
   - .invrt/
 
