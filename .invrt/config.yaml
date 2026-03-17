@@ -1,0 +1,44 @@
+# InVRT Configuration File
+
+#ddev-generated
+
+project:
+  max_crawl_depth: 3
+  max_pages: 10
+  max_concurrent_requests: 5
+  user_agent: InVRT/1.0
+
+environments:
+  local:
+    name: DDEV Local Environment
+  
+# live:
+#   name: Live Environment
+#   url: https://www.example.com
+
+
+profiles:
+  default:
+    name: Anonymous
+    description: Anonymous profile for testing.
+
+  loggedin:
+    name: Logged in User
+    description: A profile for testing logged in user scenarios.
+    username: user
+    password: pass
+
+devices:
+  desktop:
+    name: Desktop Viewport
+    description: A desktop sized viewport for testing.
+    viewport_width: 1920
+    viewport_height: 1080
+
+  mobile:
+    name: Mobile Viewport
+    description: A viewport for mobile testing.
+    viewport_width: 375
+    viewport_height: 667
+
+

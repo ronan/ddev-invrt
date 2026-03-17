@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#ddev-generated
+
+echo "Configuring InVRT for $DDEV_HOSTNAME"

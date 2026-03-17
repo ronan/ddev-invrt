@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#ddev-generated
+
+if [ $DDEV_PROJECT_TYPE == "drupal11" ]; then
+
+  echo "# Drupal roles from $DDEV_PROJECT
+
+"
+  for role in $(ddev drush role:list --field=rid); do
+    user="invrt-test-$role"
+    credentials=""
+    if [ $role != "anonymous" ]; then
+        credentials="\
+      username: $user
+      password: $user"
+    fi
+
+    echo "\
+    $role:
+      name: $(ddev drush role:list --filter=rid=$role --field=label)
+$credentials
+"
+    # ddev drush user:create $user --password="$user" --mail="$user@example.com" 1>&2
+  done
+elif [ $DDEV_PROJECT_TYPE == "wordpress" ]; then
+  echo "# No profiles detected for wordpress"
+elif [ $DDEV_PROJECT_TYPE == "backdrop" ]; then
+  echo "# No profiles detected for backdrop"
+fi

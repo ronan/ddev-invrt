@@ -7,7 +7,7 @@
 
 ## Overview
 
-This add-on integrates Invrt into your [DDEV](https://ddev.com/) project.
+This add-on integrates [Invrt](https://github.com/ronan/invrt) into your [DDEV](https://ddev.com/) project.
 
 ## Installation
 
@@ -22,27 +22,11 @@ After installation, make sure to commit the `.ddev` directory to version control
 
 | Command | Description |
 | ------- | ----------- |
-| `ddev describe` | View service status and used ports for Invrt |
+| `ddev invrt test` | Run a Visual Regression test on the site |
 | `ddev logs -s invrt` | Check Invrt logs |
 
-## Advanced Customization
-
-To change the Docker image:
-
-```bash
-ddev dotenv set .ddev/.env.invrt --invrt-docker-image="ddev/ddev-utilities:latest"
-ddev add-on get ronan/ddev-invrt
-ddev restart
-```
-
-Make sure to commit the `.ddev/.env.invrt` file to version control.
-
-All customization options (use with caution):
-
-| Variable | Flag | Default |
-| -------- | ---- | ------- |
-| `INVRT_DOCKER_IMAGE` | `--invrt-docker-image` | `ddev/ddev-utilities:latest` |
 
 ## Credits
 
 **Contributed and maintained by [@ronan](https://github.com/ronan)**
+**Based on Backstop.js by [@garris](https://github.com/garris/backstopjs)**

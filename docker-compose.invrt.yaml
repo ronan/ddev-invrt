@@ -2,14 +2,25 @@
 services:
   invrt:
     container_name: ddev-${DDEV_SITENAME}-invrt
-    image: ${INVRT_DOCKER_IMAGE:-ddev/ddev-utilities:latest}
-    command: tail -f /dev/null
-    restart: "no"
+    build:
+      context: './invrt-build'
+    image: ronan4000/invrt:latest-${DDEV_SITENAME}-built
+    entrypoint: [ /entrypoint.sh ]
+    environment:
+      DDEV_HOSTNAME: $DDEV_HOSTNAME
+      DDEV_TYPE: $DDEV_TYPE
+      DDEV_PRIMARY_URL: $DDEV_PRIMARY_URL
+      DDEV_APPROOT: $DDEV_APPROOT
+      DDEV_SITENAME: $DDEV_SITENAME
+      DDEV_PANTHEON_SITE: $DDEV_PANTHEON_SITE
+      PANTHEON_SITE: $PANTHEON_SITE
+
     # These labels ensure this service is discoverable by DDEV.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: ${DDEV_APPROOT}
 
     volumes:
+      - "./.invrt:/src/.invrt"
       - ".:/mnt/ddev_config"
       - "ddev-global-cache:/mnt/ddev-global-cache"

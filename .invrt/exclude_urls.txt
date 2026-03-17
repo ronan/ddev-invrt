@@ -1,0 +1,4 @@
+/user/logout
+/files
+/sites
+/core
