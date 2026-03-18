@@ -4,7 +4,6 @@
 
 if [ $DDEV_PROJECT_TYPE == "drupal11" ]; then
   echo "# Drupal theme breakpoints from $DDEV_PROJECT"
-  echo "#ddev-generated"
   ddev drush php:script .ddev/invrt-build/drupal-breakpoints.php
 elif [ $DDEV_PROJECT_TYPE == "wordpress" ]; then
   echo "# No device sizes detected for wordpress"

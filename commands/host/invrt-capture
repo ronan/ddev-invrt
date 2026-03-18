@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#ddev-generated
+
+ddev invrt-configure
+
+ddev invrt-setup "$@"
+ddev invrt test "$@"
+ddev invrt reference "$@"
+ddev invrt-teardown "$@"

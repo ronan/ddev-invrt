@@ -1,6 +1,0 @@
-#!/bin/bash
-
-#ddev-generated
-
-echo "Starting InVRT crawl for $DDEV_PRIMARY_URL"
-INVRT_URL="$DDEV_PRIMARY_URL" /app/bin/invrt crawl

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#ddev-generated
+
+echo "Setting up InVRT users for $DDEV_HOSTNAME"
+
+username=$(ddev invrt config "$@" | grep username | awk '{print $2}')
+password=$(ddev invrt config "$@" | grep password | awk '{print $2}')
+
+if [[ -n "$username" && -n "$password" ]]; then
+  ddev drush user-create "$username" --password="$password" --mail="$username@example.com"
+else
+  echo "No credentials found. No users will be removed."
+fi

@@ -14,4 +14,16 @@ if [ -n "$routerIp" ]; then
   IFS=$OIFS
 fi
 
+# remove already existing certs of ddev from certs file
+sed -i '/^ddev\//d' "/etc/ca-certificates.conf"
+
+# add all ddev certs
+for entry in /usr/share/ca-certificates/ddev/*.crt
+do
+  b=ddev/$(basename "$entry")
+  echo "$b" >> /etc/ca-certificates.conf
+done
+
+update-ca-certificates --fresh
+
 sleep infinity
