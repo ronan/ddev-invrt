@@ -2,13 +2,15 @@
 
 #ddev-generated
 
-echo "Setting up InVRT users for $DDEV_HOSTNAME"
-
 username=$(ddev invrt config "$@" | grep username | awk '{print $2}')
 password=$(ddev invrt config "$@" | grep password | awk '{print $2}')
 
+
 if [[ -n "$username" && -n "$password" ]]; then
-  ddev drush user-create "$username" --password="$password" --mail="$username@example.com"
-else
-  echo "No credentials found. No users will be removed."
+  if ! ddev drush user:info "$username" --field=uid > /dev/null 2>&1; then
+    ddev drush user-create "$username" --password="$password" --mail="$username@example.com" >&2
+  fi
+
+  data_dir=$(ddev invrt-data-dir "$@")
+  curl -c "$data_dir/cookies.txt" -s "$(ddev drush user:login $username)" >/dev/null
 fi

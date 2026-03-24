@@ -4,11 +4,20 @@
 
 echo "Tearing down InVRT users for $DDEV_HOSTNAME"
 
+# Delete the test user if it exists.
 username=$(ddev invrt config "$@" | grep username | awk '{print $2}')
 password=$(ddev invrt config "$@" | grep password | awk '{print $2}')
-
 if [[ -n "$username" && -n "$password" ]]; then
   ddev drush user:cancel "$username" --delete-content --yes
 else
-  echo "No credentials found. No users will be set up."
+  echo "No credentials found. No users will be removed."
+fi
+
+# Delete the cookie file if it exists.
+dir=$(ddev invrt-data-dir "$@")
+if [[ -n $dir ]] && [[ -f "$dir/cookies.json" ]]; then
+  rm "$dir/cookies.json"
+fi
+if [[ -n $dir ]] && [[ -f "$dir/cookies.txt" ]]; then
+  rm "$dir/cookies.txt"
 fi

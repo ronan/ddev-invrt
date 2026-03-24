@@ -25,6 +25,13 @@ environments:
 
 $(ddev invrt-environment | sed 's/^/  /')
 
+profiles:
+
+  anonymous:
+    name: Anonymous user
+
+$(ddev invrt-profile | sed 's/^/  /')
+
 devices:
 
   mobile:
@@ -38,12 +45,4 @@ devices:
     viewport_height: 800
 
 $(ddev invrt-device | sed 's/^/  /')
-
-profiles:
-
-  anonymous:
-    name: Anonymous user
-
-$(ddev invrt-profile | sed 's/^/  /')
-
 " | tee "$DDEV_APPROOT/.ddev/.invrt/config.yaml"

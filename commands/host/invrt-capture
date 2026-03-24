@@ -5,6 +5,6 @@
 ddev invrt-configure
 
 ddev invrt-setup "$@"
-ddev invrt test "$@"
+ddev invrt crawl "$@"
 ddev invrt reference "$@"
 ddev invrt-teardown "$@"
