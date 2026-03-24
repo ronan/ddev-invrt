@@ -3,14 +3,16 @@ name: invrt
 project_files:
   - invrt-build/
   - docker-compose.invrt.yaml
+  - commands/invrt/invrt
   - commands/host/invrt-profile
   - commands/host/invrt-device
+  - commands/host/invrt-data-dir
   - commands/host/invrt-configure
-  - commands/web/invrt-environment
   - commands/host/invrt-setup
   - commands/host/invrt-teardown
   - commands/host/invrt-capture
   - commands/host/invrt-test
+  - commands/web/invrt-environment
 
 ddev_version_constraint: '>= v1.24.3'
 

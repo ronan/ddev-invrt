@@ -14,8 +14,22 @@ $role:
   username: invrt-test-$role-user
   password: invrt-test-$role-password"
   done
+
+elif [ $DDEV_PROJECT_TYPE == "backdrop" ]; then
+
+  echo "# Backdrop roles from $DDEV_PROJECT
+"
+  for role in $(ddev bee roles-list | sed 's/\:.*//' | sed '/^$/d'); do
+    shopt -s nocasematch
+    if [ "$role" == "anonymous" ]; then
+      continue
+    fi
+    echo "
+$role:
+  name: $role
+  username: invrt-test-$role-user
+  password: invrt-test-$role-password"
+  done
 elif [ $DDEV_PROJECT_TYPE == "wordpress" ]; then
   echo "# No profiles detected for wordpress"
-elif [ $DDEV_PROJECT_TYPE == "backdrop" ]; then
-  echo "# No profiles detected for backdrop"
 fi
