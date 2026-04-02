@@ -3,7 +3,13 @@
 #ddev-generated
 
 SITE=${DDEV_PANTHEON_SITE:-$PANTHEON_SITE}
-if [[ -n  "$SITE" ]]; then
+if [[ -n  "$SITE" ]] && [[ $(command -v terminus) ]] && [[ -n "$TERMINUS_MACHINE_TOKEN" ]]; then
+  terminus auth:login --machine-token="$TERMINUS_MACHINE_TOKEN" > /dev/null 2>&1
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to authenticate with Terminus using machine token" >&2
+    exit 1
+  fi
+
   echo "# Pantheon environments from $DDEV_PANTHEON_SITE"
   envs=$(exec terminus envs $SITE --format=tsv --fields=id,domain)
   while IFS=$'\t' read -r id domain; do

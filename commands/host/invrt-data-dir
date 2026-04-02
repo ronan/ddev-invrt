@@ -1,6 +1,0 @@
-#!/bin/bash
-
-#ddev-generated
-
-data_dir=$(ddev invrt config "$@" | grep data_dir | awk '{print $2}' | sed -e "s/src\/*//g")
-echo "$DDEV_APPROOT/.ddev$data_dir"

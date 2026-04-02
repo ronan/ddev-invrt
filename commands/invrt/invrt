@@ -2,4 +2,6 @@
 
 #ddev-generated
 
+getenv
+
 /app/bin/invrt "$@"
