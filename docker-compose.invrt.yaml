@@ -7,6 +7,7 @@ services:
     image: ronan4000/invrt:latest-${DDEV_SITENAME}-built
     entrypoint: [ /entrypoint.sh ]
     environment:
+      INVRT_DIRECTORY: '/mnt/ddev_config/.invrt'
       DDEV_HOSTNAME: $DDEV_HOSTNAME
       DDEV_PRIMARY_URL: $DDEV_PRIMARY_URL
       DDEV_APPROOT: $DDEV_APPROOT
@@ -18,6 +19,5 @@ services:
       com.ddev.approot: ${DDEV_APPROOT}
 
     volumes:
-      - "./.invrt:/src/.invrt"
       - ".:/mnt/ddev_config"
       - "ddev-global-cache:/mnt/ddev-global-cache"
