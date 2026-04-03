@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #ddev-generated
 
 ddev invrt-setup "$@"

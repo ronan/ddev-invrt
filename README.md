@@ -7,7 +7,7 @@
 
 ## Overview
 
-This add-on integrates [Invrt](https://github.com/ronan/invrt) into your [DDEV](https://ddev.com/) project.
+This add-on integrates [InVRT](https://github.com/ronan/invrt) into your [DDEV](https://ddev.com/) project.
 
 ## Installation
 
@@ -16,14 +16,41 @@ ddev add-on get ronan/ddev-invrt
 ddev restart
 ```
 
-After installation, make sure to commit the `.ddev` directory to version control.
+After installation, the addon will automatically configure InVRT for your project and capture a set of baseline images.
+
+For Drupal sites, the addon will automatically configure
+
+    - A test profile for each role
+    - A test device for each theme breakpoint
+    - (Pantheon) Environment config for dev/test/live
+
+## Commands
+
+If you update your project type, theme or user types, you can reconfigure InVRT:
+
+        `ddev invrt-autoconfigure`
+
+If your site structure or content changes, you can capture a new baseline by running:
+
+        `ddev invrt baseline`
+
+To test the ddev project against the baseline, run:
+
+        `ddev invrt test`
+
+To view the test results report run:
+
+        `ddev invrt report`
+
 
 ## Usage
 
 | Command | Description |
 | ------- | ----------- |
-| `ddev invrt test` | Run a Visual Regression test on the site |
-| `ddev logs -s invrt` | Check Invrt logs |
+| `ddev invrt test` | Test the current site against the captured baseline |
+| `ddev invrt baseline` | Crawl the site and capture a set of baseline images |
+| `ddev invrt autoconfigure` | Automatically (re)configure testing based on the current DDEV project |
+
 
 
 ## Credits
